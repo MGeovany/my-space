@@ -3,16 +3,20 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 export default class BlogController {
   public async index({ response }: HttpContext) {
+    const blogs = await Blog.all()
+    console.log(blogs, 'ngl')
+
     return response.ok({
       success: true,
-      data: Blog.all(),
+      data: blogs,
     })
   }
 
   public async show({ response, params }: HttpContext) {
+    const blog = await Blog.find(params.id)
     return response.ok({
       success: true,
-      data: Blog.find(params.id),
+      data: blog,
     })
   }
 

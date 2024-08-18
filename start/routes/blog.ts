@@ -5,10 +5,17 @@ const BlogController = () => import('#controllers/blog_controller')
 
 router
   .group(() => {
-    router.get('/', [BlogController, 'index']).use(middleware.guest())
-    router.get('/:id', [BlogController, 'show']).use(middleware.guest())
-    router.post('/', [BlogController, 'store']).use(middleware.guest())
-    router.put('/:id', [BlogController, 'update']).use(middleware.auth())
-    router.delete('/:id', [BlogController, 'destroy']).use(middleware.auth())
+    router.get('/', [BlogController, 'index'])
+    router.get('/:id', [BlogController, 'show'])
   })
   .prefix('api/blog')
+  .use(middleware.guest())
+
+router
+  .group(() => {
+    router.post('/', [BlogController, 'store'])
+    router.put('/:id', [BlogController, 'update'])
+    router.delete('/:id', [BlogController, 'destroy'])
+  })
+  .prefix('api/blog')
+  .use(middleware.auth())

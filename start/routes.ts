@@ -12,11 +12,4 @@ import './routes/bookmark.ts'
 import './routes/liked_images.ts'
 import './routes/project_ideas.ts'
 import './routes/tag.ts'
-
-import router from '@adonisjs/core/services/router'
-
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
-})
+import './routes/session.ts'

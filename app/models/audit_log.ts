@@ -2,7 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
 import { ModelObject } from '@adonisjs/lucid/types/model'
-import { AuditLogAction } from 'App/constants/index.js'
+import { AuditLogAction } from 'app/constants/index.js'
 
 export default class AuditLog extends BaseModel {
   @column({ isPrimary: true })
@@ -10,7 +10,6 @@ export default class AuditLog extends BaseModel {
 
   @column()
   declare action: AuditLogAction
-
   @column()
   declare resourceId: string
 
