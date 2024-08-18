@@ -9,7 +9,6 @@ router
     router.get('/:id', [BlogController, 'show'])
   })
   .prefix('api/blog')
-  .use(middleware.guest())
 
 router
   .group(() => {
