@@ -1,10 +1,13 @@
 import Blog from '#models/blog'
+import { createBlogPostValidator } from '#validators/post_blog'
 import type { HttpContext } from '@adonisjs/core/http'
+import { MESSAGES } from '../constants/messages.js'
+import { AuditLogAction } from '../constants/index.js'
+import User from '#models/user'
 
 export default class BlogController {
   public async index({ response }: HttpContext) {
     const blogs = await Blog.all()
-    console.log(blogs, 'ngl')
 
     return response.ok({
       success: true,
@@ -20,31 +23,95 @@ export default class BlogController {
     })
   }
 
-  public async store({ request, response }: HttpContext) {
+  public async store({ auth, request, response }: HttpContext) {
     const data = request.all()
+    const payload = await createBlogPostValidator.validate(data)
+
     const blog = new Blog()
-    blog.title = data.title
-    blog.content = data.content
+    blog.title = payload.title
+    blog.content = payload.content
     await blog.save()
+
+    const user = auth.user
+    if (user) {
+      const currentValue = blog.toObject()
+      const description = `Blog created with title: ${blog.title}`
+      const ipAddress = request.ip()
+      const userId = user.id.toString()
+
+      await User.createAuditTrail(
+        userId,
+        ipAddress,
+        AuditLogAction.CREATE,
+        description,
+        currentValue
+      )
+    }
+
     return response.created({
       success: true,
-      data: blog,
+      message: MESSAGES.blogCreateSuccess,
     })
   }
 
-  public async update({ params, request }: HttpContext) {
+  public async update({ params, request, response, auth }: HttpContext) {
     const blog = await Blog.findOrFail(params.id)
     const data = request.only(['title', 'content'])
-    blog.merge(data)
+    const payload = await createBlogPostValidator.validate(data)
+
+    const previousValue = blog.toObject()
+
+    blog.merge(payload)
     await blog.save()
-    return blog
+
+    const user = auth.user
+
+    if (user) {
+      const currentValue = blog.toObject()
+      const description = `Blog updated with title: ${blog.title}`
+      const ipAddress = request.ip()
+      const userId = user.id.toString()
+
+      await User.createAuditTrail(
+        userId,
+        ipAddress,
+        AuditLogAction.UPDATE,
+        description,
+        currentValue,
+        previousValue
+      )
+    }
+
+    return response.ok({
+      success: true,
+      message: MESSAGES.blogUpdateSuccess,
+    })
   }
 
-  public async destroy({ params }: HttpContext) {
+  public async destroy({ params, response, request, auth }: HttpContext) {
     const blog = await Blog.findOrFail(params.id)
+
     await blog.delete()
-    return {
-      success: true,
+
+    const user = auth.user
+
+    if (user) {
+      const currentValue = blog.toObject()
+      const description = `Blog deleted with title: ${blog.title}`
+      const ipAddress = request.ip()
+      const userId = user.id.toString()
+
+      await User.createAuditTrail(
+        userId,
+        ipAddress,
+        AuditLogAction.DELETE,
+        description,
+        currentValue
+      )
     }
+    return response.ok({
+      success: true,
+      message: MESSAGES.blogDeleteSuccess,
+    })
   }
 }

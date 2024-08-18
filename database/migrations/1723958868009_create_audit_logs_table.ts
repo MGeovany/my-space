@@ -1,8 +1,8 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
-import { AuditLogAction } from 'app/constants/index.js'
+import { AuditLogAction } from '../../app/constants/index.js'
 
 export default class extends BaseSchema {
-  protected tableName = 'audit_log'
+  protected tableName = 'audit_logs'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
@@ -16,11 +16,11 @@ export default class extends BaseSchema {
         .notNullable()
       table.text('table').notNullable()
       table.text('source_ip_address')
-      table.uuid('resource_id').notNullable().index()
+      table.text('resource_id').notNullable().index()
       table.text('description')
       table.jsonb('previous_value')
       table.jsonb('current_value')
-      table.uuid('user_id')
+      table.text('user_id')
       table.timestamp('created_at', { useTz: true }).notNullable()
     })
   }

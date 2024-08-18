@@ -16,5 +16,4 @@ export default class Blog extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-  static id: any
 }
