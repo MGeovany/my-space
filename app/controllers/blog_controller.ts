@@ -38,13 +38,16 @@ export default class BlogController {
       const description = `Blog created with title: ${blog.title}`
       const ipAddress = request.ip()
       const userId = user.id.toString()
+      const table = 'blogs'
 
       await User.createAuditTrail(
         userId,
         ipAddress,
         AuditLogAction.CREATE,
         description,
-        currentValue
+        currentValue,
+        undefined,
+        table
       )
     }
 
@@ -78,7 +81,8 @@ export default class BlogController {
         AuditLogAction.UPDATE,
         description,
         currentValue,
-        previousValue
+        previousValue,
+        Blog.table
       )
     }
 
@@ -106,7 +110,9 @@ export default class BlogController {
         ipAddress,
         AuditLogAction.DELETE,
         description,
-        currentValue
+        currentValue,
+        undefined,
+        Blog.table
       )
     }
     return response.ok({

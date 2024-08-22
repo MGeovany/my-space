@@ -1,5 +1,7 @@
 import User from '#models/user'
+import { createUserValidator } from '#validators/user'
 import type { HttpContext } from '@adonisjs/core/http'
+import { MESSAGES } from '../constants/messages.js'
 
 export default class SessionController {
   public async login({ response, request, auth }: HttpContext) {
@@ -16,7 +18,7 @@ export default class SessionController {
   }
 
   public async signup({ response, request }: HttpContext) {
-    const { email, password, fullName } = request.only(['email', 'password', 'fullName'])
+    const { email, password, fullName } = await createUserValidator.validate(request.all())
 
     const user = await User.create({
       email,
@@ -24,8 +26,9 @@ export default class SessionController {
       fullName,
     })
 
-    return response.ok({
+    return response.send({
       success: true,
+      message: MESSAGES.userCreateSuccess,
       data: user,
     })
   }
@@ -35,6 +38,7 @@ export default class SessionController {
 
     return response.ok({
       success: true,
+      message: MESSAGES.userLoggedOut,
     })
   }
 }

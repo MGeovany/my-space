@@ -6,6 +6,9 @@ export const MESSAGES = {
   invalidCredentials: 'Invalid credentials',
   invalidToken: 'Invalid token',
 
+  userCreateSuccess: 'User created successfully',
+  userLoggedOut: 'User logged out successfully',
+
   blogCreateSuccess: 'Blog added successfully',
   blogUpdateSuccess: 'Blog updated successfully',
   blogDeleteSuccess: 'Blog deleted successfully',

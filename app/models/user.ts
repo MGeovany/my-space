@@ -37,13 +37,14 @@ export default class User extends compose(BaseModel, AuthFinder) {
     action: AuditLogAction,
     description?: string | null,
     currentValue?: ModelObject,
-    previousValue?: ModelObject
+    previousValue?: ModelObject,
+    table?: string
   ) {
     await AuditLog.create({
       userId,
       action: action,
       resourceId: userId,
-      table: this.table,
+      table,
       previousValue,
       currentValue,
       description,
