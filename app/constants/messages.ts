@@ -13,21 +13,13 @@ export const MESSAGES = {
   blogUpdateSuccess: 'Blog updated successfully',
   blogDeleteSuccess: 'Blog deleted successfully',
   blogNotFound: 'Blog not found',
-  blogListEmpty: 'Blog list is empty',
-  blogListFail: 'Failed to fetch blog list',
 
   bookmarkCreateSuccess: 'Bookmark added successfully',
+  bookmarkUpdateSuccess: 'Bookmark updated successfully',
   bookmarkDeleteSuccess: 'Bookmark deleted successfully',
   bookmarkNotFound: 'Bookmark not found',
-  bookmarkListSuccess: 'Bookmark list fetched successfully',
-  bookmarkListEmpty: 'Bookmark list is empty',
-  bookmarkListFail: 'Failed to fetch bookmark list',
 
   projectIdeaCreateSuccess: 'Project idea added successfully',
   projectIdeaUpdateSuccess: 'Project idea updated successfully',
   projectIdeaDeleteSuccess: 'Project idea deleted successfully',
-  projectIdeaNotFound: 'Project idea not found',
-  projectIdeaListSuccess: 'Project idea list fetched successfully',
-  projectIdeaListEmpty: 'Project idea list is empty',
-  projectIdeaListFail: 'Failed to fetch project idea list',
 }

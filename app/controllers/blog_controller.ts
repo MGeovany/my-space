@@ -17,6 +17,7 @@ export default class BlogController {
 
   public async show({ response, params }: HttpContext) {
     const blog = await Blog.find(params.id)
+
     return response.ok({
       success: true,
       data: blog,
@@ -54,6 +55,7 @@ export default class BlogController {
     return response.created({
       success: true,
       message: MESSAGES.blogCreateSuccess,
+      blog: blog,
     })
   }
 

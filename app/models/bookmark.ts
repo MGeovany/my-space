@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BookmarkTag } from '../../app/constants/index.js'
 
 export default class Bookmark extends BaseModel {
   @column({ isPrimary: true })
@@ -15,7 +16,7 @@ export default class Bookmark extends BaseModel {
   declare description: string
 
   @column()
-  declare tag: string
+  declare tag: BookmarkTag
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

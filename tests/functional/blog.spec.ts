@@ -8,17 +8,14 @@ import { BlogFactory } from '#database/factories/blog_factory'
 import { AuditLogAction } from '../../app/constants/index.js'
 import AuditLog from '#models/audit_log'
 
-test.group('BlogController', (group) => {
+test.group('Blog controller', (group) => {
   group.each.setup(async () => {
     group.each.setup(() => testUtils.db().withGlobalTransaction())
     group.each.setup(() => testUtils.db().truncate())
   })
 
   test('should return a list of blogs', async ({ client }) => {
-    const blog = new Blog()
-    blog.title = 'Sample Blog'
-    blog.content = 'Sample Content'
-    await blog.save()
+    const blog = await BlogFactory.create()
 
     const response = await client.get('/api/blog')
 
@@ -36,10 +33,7 @@ test.group('BlogController', (group) => {
   })
 
   test('should return a single blog by ID', async ({ client }) => {
-    const blog = new Blog()
-    blog.title = 'Sample Blog'
-    blog.content = 'Sample Content'
-    await blog.save()
+    const blog = await BlogFactory.create()
 
     const response = await client.get(`api/blog/${blog.id}`)
 
@@ -63,17 +57,19 @@ test.group('BlogController', (group) => {
     })
 
     response.assertStatus(201)
-    response.assertBodyContains({
-      success: true,
-      message: MESSAGES.blogCreateSuccess,
-    })
-
     const blog = await Blog.findByOrFail('title', newBlog.title)
     assert.isNotNull(blog)
     response.assertBodyContains({
       success: true,
       message: MESSAGES.blogCreateSuccess,
     })
+
+    assert.exists(
+      await AuditLog.query()
+        .where('action', AuditLogAction.CREATE)
+        .where('user_id', user.id)
+        .where('table', 'blogs')
+    )
   })
 
   test('should update an existing blog and create an audit log', async ({ client, assert }) => {
