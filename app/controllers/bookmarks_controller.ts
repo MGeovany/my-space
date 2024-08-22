@@ -4,6 +4,7 @@ import { createBookmarkValidator } from '#validators/bookmark'
 import type { HttpContext } from '@adonisjs/core/http'
 import { AuditLogAction } from '../../app/constants/index.js'
 import { MESSAGES } from '../../app/constants/messages.js'
+import Blog from '#models/blog'
 
 export default class BookmarksController {
   public async index({ response }: HttpContext) {
@@ -24,7 +25,7 @@ export default class BookmarksController {
     })
   }
 
-  public async store({ response, request }: HttpContext) {
+  public async store({ response, request, auth }: HttpContext) {
     const data = request.all()
     const payload = await createBookmarkValidator.validate(data)
 
@@ -35,9 +36,27 @@ export default class BookmarksController {
     bookmark.tag = payload.tag
     await bookmark.save()
 
+    const user = auth.user
+    if (user) {
+      const currentValue = bookmark.toObject()
+      const description = `Bookmark created with title: ${bookmark.title}`
+      const ipAddress = request.ip()
+      const userId = user.id.toString()
+
+      await User.createAuditTrail(
+        userId,
+        ipAddress,
+        AuditLogAction.CREATE,
+        description,
+        currentValue,
+        undefined,
+        Blog.table
+      )
+    }
+
     return response.created({
       success: true,
-      messages: MESSAGES.bookmarkCreateSuccess,
+      message: MESSAGES.bookmarkCreateSuccess,
       data: bookmark,
     })
   }
@@ -59,7 +78,6 @@ export default class BookmarksController {
       const description = `Bookmark updated with title: ${bookmark.title}`
       const ipAddress = request.ip()
       const userId = user.id.toString()
-      const table = 'bookmarks'
 
       await User.createAuditTrail(
         userId,
@@ -68,13 +86,13 @@ export default class BookmarksController {
         description,
         currentValue,
         undefined,
-        table
+        Blog.table
       )
     }
 
     return response.ok({
       success: true,
-      messages: MESSAGES.bookmarkUpdateSuccess,
+      message: MESSAGES.bookmarkUpdateSuccess,
     })
   }
 

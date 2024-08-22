@@ -1,48 +1,125 @@
 import ProjectIdea from '#models/project_idea'
+import User from '#models/user'
+import { createProjectIdeaValidator } from '#validators/project_idea'
 import type { HttpContext } from '@adonisjs/core/http'
+
+import { AuditLogAction } from '../../app/constants/index.js'
+import { MESSAGES } from '../../app/constants/messages.js'
 
 export default class ProjectIdeasController {
   public async index({ response }: HttpContext) {
     const projectIdeas = await ProjectIdea.all()
-    return response.ok(projectIdeas)
+
+    return response.ok({
+      success: true,
+      data: projectIdeas,
+    })
   }
 
   public async show({ params, response }: HttpContext) {
     const projectIdea = await ProjectIdea.find(params.id)
-    return response.ok(projectIdea)
-  }
-
-  public async store({ request, response }: HttpContext) {
-    const data = request.all()
-
-    const blog = new ProjectIdea()
-    blog.title = data.title
-    blog.description = data.description
-    blog.stack = data.stack
-    blog.url = data.url
-
-    await blog.save()
-    return response.created({
+    return response.ok({
       success: true,
-      data: blog,
+      data: projectIdea,
     })
   }
 
-  public async update({ request, response }: HttpContext) {
+  public async store({ request, response, auth }: HttpContext) {
     const data = request.all()
-    const projectIdea = await ProjectIdea.findOrFail(data.id)
+    const payload = await createProjectIdeaValidator.validate(data)
 
-    projectIdea.title = request.input('title')
-    projectIdea.description = request.input('description')
-    projectIdea.stack = request.input('stack')
-    projectIdea.url = request.input('url')
+    const projectIdea = new ProjectIdea()
+    projectIdea.title = payload.title
+    projectIdea.description = payload.description
+
+    projectIdea.url = payload.url
     await projectIdea.save()
-    return response.ok(projectIdea)
+
+    const user = auth.user
+    if (user) {
+      const currentValue = projectIdea.toObject()
+      const description = `Project Idea created with title: ${projectIdea.title}`
+      const userId = user.id.toString()
+      const ipAddress = request.ip()
+
+      await User.createAuditTrail(
+        userId,
+        ipAddress,
+        AuditLogAction.CREATE,
+        description,
+        currentValue,
+        undefined,
+        ProjectIdea.table
+      )
+    }
+
+    return response.created({
+      success: true,
+      message: MESSAGES.projectIdeaCreateSuccess,
+      data: projectIdea,
+    })
   }
 
-  public async destroy({ params, response }: HttpContext) {
+  public async update({ request, response, params, auth }: HttpContext) {
+    const data = request.all()
+    const payload = await createProjectIdeaValidator.validate(data)
+
+    const projectIdea = await ProjectIdea.findOrFail(params.id)
+    projectIdea.title = payload.title
+    projectIdea.description = payload.description
+    projectIdea.url = payload.url
+    await projectIdea.save()
+
+    const user = auth.user
+    if (user) {
+      const currentValue = projectIdea.toObject()
+      const description = `Project Idea updated with title: ${projectIdea.title}`
+      const userId = user.id.toString()
+      const ipAddress = request.ip()
+
+      await User.createAuditTrail(
+        userId,
+        ipAddress,
+        AuditLogAction.UPDATE,
+        description,
+        currentValue,
+        undefined,
+        ProjectIdea.table
+      )
+    }
+    return response.ok({
+      success: true,
+      message: MESSAGES.projectIdeaUpdateSuccess,
+      data: projectIdea,
+    })
+  }
+
+  public async destroy({ params, response, request, auth }: HttpContext) {
     const projectIdea = await ProjectIdea.findOrFail(params.id)
     await projectIdea.delete()
-    return response.noContent()
+
+    const user = auth.user
+    if (user) {
+      const currentValue = projectIdea.toObject()
+      const description = `Project Idea deleted with title: ${projectIdea.title}`
+      const ipAddress = request.ip()
+      const userId = user.id.toString()
+      const table = 'bookmarks'
+
+      await User.createAuditTrail(
+        userId,
+        ipAddress,
+        AuditLogAction.DELETE,
+        description,
+        undefined,
+        currentValue,
+        table
+      )
+    }
+
+    return response.ok({
+      success: true,
+      message: MESSAGES.projectIdeaDeleteSuccess,
+    })
   }
 }

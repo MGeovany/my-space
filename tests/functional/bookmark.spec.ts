@@ -60,7 +60,7 @@ test.group('Bookmark controller', (group) => {
     response.assertStatus(201)
     response.assertBodyContains({
       success: true,
-      messages: MESSAGES.bookmarkCreateSuccess,
+      message: MESSAGES.bookmarkCreateSuccess,
     })
     const bookmark = await Bookmark.findByOrFail('title', newBookmark.title)
     assert.isNotNull(bookmark)
@@ -86,7 +86,7 @@ test.group('Bookmark controller', (group) => {
     response.assertStatus(200)
     response.assertBodyContains({
       success: true,
-      messages: MESSAGES.bookmarkUpdateSuccess,
+      message: MESSAGES.bookmarkUpdateSuccess,
     })
 
     const updatedBookmark = await Bookmark.findOrFail(bookmark.id)

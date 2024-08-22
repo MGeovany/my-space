@@ -12,9 +12,6 @@ export default class ProjectIdea extends BaseModel {
   declare description: string
 
   @column()
-  declare stack: string
-
-  @column()
   declare url: string
 
   @column.dateTime({ autoCreate: true })
