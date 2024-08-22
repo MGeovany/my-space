@@ -8,10 +8,9 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('title').notNullable()
       table.text('description').notNullable()
-      table.string('stack').notNullable()
       table.string('url')
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at', { useTz: true }).notNullable()
+      table.timestamp('updated_at', { useTz: true }).notNullable()
     })
   }
 

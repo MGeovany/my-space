@@ -22,6 +22,7 @@ export default class extends BaseSchema {
       table.jsonb('current_value')
       table.text('user_id')
       table.timestamp('created_at', { useTz: true }).notNullable()
+      table.timestamp('updated_at', { useTz: true }).notNullable()
     })
   }
 
