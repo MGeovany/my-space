@@ -7,7 +7,7 @@
 |
 */
 
-import './routes/blog.ts'
-import './routes/bookmark.ts'
-import './routes/project_ideas.ts'
-import './routes/session.ts'
+import './routes/blog.js'
+import './routes/bookmark.js'
+import './routes/project_ideas.js'
+import './routes/session.js'

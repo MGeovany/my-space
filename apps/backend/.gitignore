@@ -30,6 +30,7 @@ yarn-error.log
 # Platform specific
 .DS_Store
 
-# Next.js
-.next
-out
+
+
+.nx/cache
+.nx/workspace-data

@@ -1,5 +1,5 @@
 import vine from '@vinejs/vine'
-import { BookmarkTag } from '../../app/constants/index.js'
+import { BookmarkTag } from '../constants/index.js'
 
 /**
  * Validates the bookmark creation action

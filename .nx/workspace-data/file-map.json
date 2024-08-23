@@ -1,0 +1,656 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.6.2",
+  "deps": {
+    "next": "14.2.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@nx/next": "^19.6.2",
+    "nx": "19.6.2"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/next/plugin",
+      "options": {
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "serveStaticTargetName": "serve-static"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "tsconfig.json",
+        "hash": "10458285668168121747"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "7491429331426537560"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "18282861238819353093"
+      },
+      {
+        "file": "package.json",
+        "hash": "12544546857036490445"
+      },
+      {
+        "file": "nx.json",
+        "hash": "388312510819791306"
+      }
+    ],
+    "projectFileMap": {
+      "backend": [
+        {
+          "file": "apps/backend/.editorconfig",
+          "hash": "14055066208268429585"
+        },
+        {
+          "file": "apps/backend/.env.example",
+          "hash": "13400006150756841683"
+        },
+        {
+          "file": "apps/backend/.eslintignore",
+          "hash": "16966004179258441771"
+        },
+        {
+          "file": "apps/backend/.eslintrc.json",
+          "hash": "3223160795003472733"
+        },
+        {
+          "file": "apps/backend/.gitignore",
+          "hash": "2440957145652036530"
+        },
+        {
+          "file": "apps/backend/.prettierignore",
+          "hash": "16966004179258441771"
+        },
+        {
+          "file": "apps/backend/.prettierrc",
+          "hash": "79870708651102472"
+        },
+        {
+          "file": "apps/backend/README.md",
+          "hash": "498376416664996505"
+        },
+        {
+          "file": "apps/backend/ace.js",
+          "hash": "2639724144140958483"
+        },
+        {
+          "file": "apps/backend/adonisrc.ts",
+          "hash": "9137426360401457190",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1",
+            [
+              "npm:@adonisjs/core@6.12.1",
+              "dynamic"
+            ],
+            [
+              "npm:@adonisjs/lucid@21.2.0",
+              "dynamic"
+            ],
+            [
+              "npm:@adonisjs/cors@2.2.1",
+              "dynamic"
+            ],
+            [
+              "npm:@adonisjs/session@7.4.2",
+              "dynamic"
+            ],
+            [
+              "npm:@adonisjs/auth@9.2.3",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/backend/app/constants/index.ts",
+          "hash": "5598520882908951023"
+        },
+        {
+          "file": "apps/backend/app/constants/messages.ts",
+          "hash": "4181562124657596899"
+        },
+        {
+          "file": "apps/backend/app/controllers/blog_controller.ts",
+          "hash": "12008786757468311158",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/app/controllers/bookmarks_controller.ts",
+          "hash": "6721571984001154750",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/app/controllers/health_checks_controller.ts",
+          "hash": "14604436817394489196",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/app/controllers/project_ideas_controller.ts",
+          "hash": "18143869686251559242",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/app/controllers/session_controller.ts",
+          "hash": "1896979333272626506",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/app/exceptions/handler.ts",
+          "hash": "809490294368234708",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/app/middleware/auth_middleware.ts",
+          "hash": "16505216407148582126",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@adonisjs/auth@9.2.3"
+          ]
+        },
+        {
+          "file": "apps/backend/app/middleware/container_bindings_middleware.ts",
+          "hash": "13376073306998002636",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/app/middleware/force_json_response_middleware.ts",
+          "hash": "17072095641708251448",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/app/middleware/guest_middleware.ts",
+          "hash": "17955756918768163091",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@adonisjs/auth@9.2.3"
+          ]
+        },
+        {
+          "file": "apps/backend/app/models/audit_log.ts",
+          "hash": "9312631229835829464",
+          "deps": [
+            "npm:luxon",
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/app/models/blog.ts",
+          "hash": "2795199437288432039",
+          "deps": [
+            "npm:luxon",
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/app/models/bookmark.ts",
+          "hash": "1618646335695969109",
+          "deps": [
+            "npm:luxon",
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/app/models/project_idea.ts",
+          "hash": "11936584295264096248",
+          "deps": [
+            "npm:luxon",
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/app/models/user.ts",
+          "hash": "1689843644508043529",
+          "deps": [
+            "npm:luxon",
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@adonisjs/lucid@21.2.0",
+            "npm:@adonisjs/auth@9.2.3"
+          ]
+        },
+        {
+          "file": "apps/backend/app/validators/bookmark.ts",
+          "hash": "6176310576236838764",
+          "deps": [
+            "npm:@vinejs/vine@2.1.0"
+          ]
+        },
+        {
+          "file": "apps/backend/app/validators/post_blog.ts",
+          "hash": "10956586820225129064",
+          "deps": [
+            "npm:@vinejs/vine@2.1.0"
+          ]
+        },
+        {
+          "file": "apps/backend/app/validators/project_idea.ts",
+          "hash": "216707054013084454",
+          "deps": [
+            "npm:@vinejs/vine@2.1.0"
+          ]
+        },
+        {
+          "file": "apps/backend/app/validators/user.ts",
+          "hash": "1152980585189900537",
+          "deps": [
+            "npm:@vinejs/vine@2.1.0"
+          ]
+        },
+        {
+          "file": "apps/backend/bin/console.ts",
+          "hash": "1865019472680030332",
+          "deps": [
+            "npm:reflect-metadata@0.2.2",
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/bin/server.ts",
+          "hash": "14393562204676428676",
+          "deps": [
+            "npm:reflect-metadata@0.2.2",
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/bin/test.ts",
+          "hash": "1376336991517001216",
+          "deps": [
+            "npm:reflect-metadata@0.2.2",
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@japa/runner@3.1.4"
+          ]
+        },
+        {
+          "file": "apps/backend/config/app.ts",
+          "hash": "11608222912901957773",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/config/auth.ts",
+          "hash": "12120515068348791014",
+          "deps": [
+            "npm:@adonisjs/auth@9.2.3"
+          ]
+        },
+        {
+          "file": "apps/backend/config/bodyparser.ts",
+          "hash": "7446426491078618688",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/config/cors.ts",
+          "hash": "3189012618994018764",
+          "deps": [
+            "npm:@adonisjs/cors@2.2.1"
+          ]
+        },
+        {
+          "file": "apps/backend/config/database.ts",
+          "hash": "6328536851697497669",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/config/hash.ts",
+          "hash": "17490154772935848561",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/config/logger.ts",
+          "hash": "14369866990040019739",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/config/session.ts",
+          "hash": "9540996412783301576",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@adonisjs/session@7.4.2"
+          ]
+        },
+        {
+          "file": "apps/backend/database/factories/blog_factory.ts",
+          "hash": "924293103875688957",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0",
+            "npm:luxon"
+          ]
+        },
+        {
+          "file": "apps/backend/database/factories/bookmark_factory.ts",
+          "hash": "9873317863496142963",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0",
+            "npm:luxon"
+          ]
+        },
+        {
+          "file": "apps/backend/database/factories/project_idea_factory.ts",
+          "hash": "3686161448330101534",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0",
+            "npm:luxon"
+          ]
+        },
+        {
+          "file": "apps/backend/database/factories/user_factory.ts",
+          "hash": "8746259362382506412",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0",
+            "npm:luxon"
+          ]
+        },
+        {
+          "file": "apps/backend/database/migrations/1723788264502_create_users_table.ts",
+          "hash": "11271176612452247255",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/database/migrations/1723952964756_create_blogs_table.ts",
+          "hash": "510870332159510865",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/database/migrations/1723958868009_create_audit_logs_table.ts",
+          "hash": "1050265700246046729",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/database/migrations/1723964405603_create_bookmarks_table.ts",
+          "hash": "13631102723343877951",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/database/migrations/1724002898188_create_project_ideas_table.ts",
+          "hash": "10185554046290199545",
+          "deps": [
+            "npm:@adonisjs/lucid@21.2.0"
+          ]
+        },
+        {
+          "file": "apps/backend/nx.json",
+          "hash": "16254288210483048534"
+        },
+        {
+          "file": "apps/backend/package-lock.json",
+          "hash": "5875470593175459835"
+        },
+        {
+          "file": "apps/backend/package.json",
+          "hash": "4083815438075862806",
+          "deps": [
+            "npm:@adonisjs/assembler@7.7.0",
+            "npm:@adonisjs/prettier-config@1.3.0",
+            "npm:@japa/api-client@2.0.3",
+            "npm:@japa/assert@3.0.0",
+            "npm:@japa/plugin-adonisjs@3.0.1",
+            "npm:@japa/runner@3.1.4",
+            "npm:@swc/core@1.7.11",
+            "npm:@types/luxon@3.4.2",
+            "npm:@types/node",
+            "npm:eslint@8.57.0",
+            "npm:eslint-plugin-adonis@2.1.1",
+            "npm:hot-hook@0.2.6",
+            "npm:pino-pretty@11.2.2",
+            "npm:prettier@3.3.3",
+            "npm:ts-node@10.9.2",
+            "npm:typescript@5.5.4",
+            "npm:nx",
+            "npm:@adonisjs/auth@9.2.3",
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@adonisjs/cors@2.2.1",
+            "npm:@adonisjs/lucid@21.2.0",
+            "npm:@adonisjs/session@7.4.2",
+            "npm:@vinejs/vine@2.1.0",
+            "npm:luxon",
+            "npm:pg@8.12.0",
+            "npm:reflect-metadata@0.2.2"
+          ]
+        },
+        {
+          "file": "apps/backend/start/env.ts",
+          "hash": "18015558688871600754",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/start/health.ts",
+          "hash": "4675307951954011991",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/start/kernel.ts",
+          "hash": "6959707774084857866",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1",
+            [
+              "npm:@adonisjs/cors@2.2.1",
+              "dynamic"
+            ],
+            [
+              "npm:@adonisjs/core@6.12.1",
+              "dynamic"
+            ],
+            [
+              "npm:@adonisjs/session@7.4.2",
+              "dynamic"
+            ],
+            [
+              "npm:@adonisjs/auth@9.2.3",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/backend/start/routes.ts",
+          "hash": "17272349927332885949"
+        },
+        {
+          "file": "apps/backend/start/routes/blog.ts",
+          "hash": "9356656784671244902",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/start/routes/bookmark.ts",
+          "hash": "4560024329653648470",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/start/routes/project_ideas.ts",
+          "hash": "2338717500815036857",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/start/routes/session.ts",
+          "hash": "3633587890523176265",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/tests/bootstrap.ts",
+          "hash": "1673040109121444494",
+          "deps": [
+            "npm:@japa/assert@3.0.0",
+            "npm:@japa/api-client@2.0.3",
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@japa/runner@3.1.4",
+            "npm:@japa/plugin-adonisjs@3.0.1",
+            "npm:@adonisjs/session@7.4.2",
+            "npm:@adonisjs/auth@9.2.3"
+          ]
+        },
+        {
+          "file": "apps/backend/tests/functional/auth.spec.ts",
+          "hash": "8627988315012864507",
+          "deps": [
+            "npm:@japa/runner@3.1.4",
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/tests/functional/blog.spec.ts",
+          "hash": "8656775891520293667",
+          "deps": [
+            "npm:@japa/runner@3.1.4",
+            "npm:@adonisjs/core@6.12.1"
+          ]
+        },
+        {
+          "file": "apps/backend/tests/functional/bookmark.spec.ts",
+          "hash": "6419539286500737429",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@japa/runner@3.1.4"
+          ]
+        },
+        {
+          "file": "apps/backend/tests/functional/fixtures/auth.json",
+          "hash": "8836514216325901317"
+        },
+        {
+          "file": "apps/backend/tests/functional/project_ideas.spec.ts",
+          "hash": "2516258980143714026",
+          "deps": [
+            "npm:@adonisjs/core@6.12.1",
+            "npm:@japa/runner@3.1.4"
+          ]
+        },
+        {
+          "file": "apps/backend/tsconfig.json",
+          "hash": "16653901588605988105"
+        }
+      ],
+      "frontend": [
+        {
+          "file": "apps/frontend/.eslintrc.json",
+          "hash": "10616060546436571437"
+        },
+        {
+          "file": "apps/frontend/.gitignore",
+          "hash": "15751075988610075934"
+        },
+        {
+          "file": "apps/frontend/README.md",
+          "hash": "12205685531602560652"
+        },
+        {
+          "file": "apps/frontend/next.config.mjs",
+          "hash": "6567081978241091914"
+        },
+        {
+          "file": "apps/frontend/package-lock.json",
+          "hash": "7630931612822919039"
+        },
+        {
+          "file": "apps/frontend/package.json",
+          "hash": "13024843035536262121",
+          "deps": [
+            "npm:@nx/next",
+            "npm:@types/node",
+            "npm:eslint@8.57.0",
+            "npm:postcss",
+            "npm:typescript@5.5.4",
+            "npm:next",
+            "npm:react",
+            "npm:react-dom"
+          ]
+        },
+        {
+          "file": "apps/frontend/postcss.config.mjs",
+          "hash": "2557392112968376575"
+        },
+        {
+          "file": "apps/frontend/public/next.svg",
+          "hash": "8300767200008744458"
+        },
+        {
+          "file": "apps/frontend/public/vercel.svg",
+          "hash": "2376673330454856631"
+        },
+        {
+          "file": "apps/frontend/src/app/favicon.ico",
+          "hash": "9157999678830540297"
+        },
+        {
+          "file": "apps/frontend/src/app/globals.css",
+          "hash": "10620967136394561243"
+        },
+        {
+          "file": "apps/frontend/src/app/layout.tsx",
+          "hash": "14869893044596788660",
+          "deps": [
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/app/page.tsx",
+          "hash": "16908419593553433010",
+          "deps": [
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/frontend/tailwind.config.ts",
+          "hash": "8266647255848899898",
+          "deps": [
+            "npm:tailwindcss"
+          ]
+        },
+        {
+          "file": "apps/frontend/tsconfig.json",
+          "hash": "4320684160905164141"
+        }
+      ]
+    }
+  }
+}

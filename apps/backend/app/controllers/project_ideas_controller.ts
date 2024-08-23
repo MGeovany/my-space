@@ -3,8 +3,8 @@ import User from '#models/user'
 import { createProjectIdeaValidator } from '#validators/project_idea'
 import type { HttpContext } from '@adonisjs/core/http'
 
-import { AuditLogAction } from '../../app/constants/index.js'
-import { MESSAGES } from '../../app/constants/messages.js'
+import { AuditLogAction } from '../constants/index.js'
+import { MESSAGES } from '../constants/messages.js'
 
 export default class ProjectIdeasController {
   public async index({ response }: HttpContext) {

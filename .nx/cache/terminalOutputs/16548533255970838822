@@ -1,0 +1,39 @@
+
+> backend@0.0.0 test
+> node ace test
+
+c[ [34minfo[39m ] booting application to run tests...
+[90m❯ Already up to date[39m
+
+functional / Auth Apis[2m (tests/functional/auth.spec.ts)[22m
+  [32m✔[39m [90massert register api creates a user successfully[39m [2m(120.43ms)[22m
+  [32m✔[39m [90massert login api logs in a user successfully[39m [2m(135.54ms)[22m
+  [32m✔[39m [90massert login api fails authentication for incorrect password[39m [2m(132.63ms)[22m
+  [32m✔[39m [90masset logout api logs out a user successfully[39m [2m(68.71ms)[22m
+
+functional / Blog controller[2m (tests/functional/blog.spec.ts)[22m
+  [32m✔[39m [90mshould return a list of blogs[39m [2m(8.96ms)[22m
+  [32m✔[39m [90mshould return a single blog by ID[39m [2m(3.35ms)[22m
+  [32m✔[39m [90mshould create a new blog[39m [2m(74.27ms)[22m
+  [32m✔[39m [90mshould update an existing blog and create an audit log[39m [2m(68.92ms)[22m
+  [32m✔[39m [90mshould delete a blog and create an audit log[39m [2m(68.53ms)[22m
+
+functional / Bookmark controller[2m (tests/functional/bookmark.spec.ts)[22m
+  [32m✔[39m [90mshould return a list of bookmarks[39m [2m(7.06ms)[22m
+  [32m✔[39m [90mshould return a single bookmark by ID[39m [2m(2.78ms)[22m
+  [32m✔[39m [90mshould create a new bookmark[39m [2m(77.27ms)[22m
+  [32m✔[39m [90mshould update a bookmark[39m [2m(73.54ms)[22m
+  [32m✔[39m [90mshould delete a bookmark[39m [2m(67.56ms)[22m
+
+functional / Project ideas controller[2m (tests/functional/project_ideas.spec.ts)[22m
+  [32m✔[39m [90mshould return a list of project ideas[39m [2m(7.14ms)[22m
+  [32m✔[39m [90mshould return a single project idea by ID[39m [2m(2.61ms)[22m
+  [32m✔[39m [90mshould create a new project idea[39m [2m(67.72ms)[22m
+  [32m✔[39m [90mshould update a project idea[39m [2m(67.73ms)[22m
+  [32m✔[39m [90mshould delete a project idea[39m [2m(74.98ms)[22m
+[ [32msuccess[39m ] Truncated tables successfully
+
+[42m[30m PASSED [49m[39m
+
+[2mTests[22m  [32m19 passed[39m [2m(19)[22m
+ [2mTime[22m  [2m1s[22m

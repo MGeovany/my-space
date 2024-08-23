@@ -2,8 +2,8 @@ import Bookmark from '#models/bookmark'
 import User from '#models/user'
 import { createBookmarkValidator } from '#validators/bookmark'
 import type { HttpContext } from '@adonisjs/core/http'
-import { AuditLogAction } from '../../app/constants/index.js'
-import { MESSAGES } from '../../app/constants/messages.js'
+import { AuditLogAction } from '../constants/index.js'
+import { MESSAGES } from '../constants/messages.js'
 import Blog from '#models/blog'
 
 export default class BookmarksController {

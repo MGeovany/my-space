@@ -1,0 +1,65 @@
+
+> backend@0.0.0 test
+> node ace test
+
+c[ [34minfo[39m ] booting application to run tests...
+[90m❯ Already up to date[39m
+
+functional / Auth Apis[2m (tests/functional/auth.spec.ts)[22m
+  [32m✔[39m [90massert register api creates a user successfully[39m [2m(95.92ms)[22m
+  [32m✔[39m [90massert login api logs in a user successfully[39m [2m(135.42ms)[22m
+  [32m✔[39m [90massert login api fails authentication for incorrect password[39m [2m(125.94ms)[22m
+  [32m✔[39m [90masset logout api logs out a user successfully[39m [2m(64.31ms)[22m
+
+functional / Blog controller[2m (tests/functional/blog.spec.ts)[22m
+  [31m✖[39m [31mshould return a list of blogs[39m [2m(12.51ms)[22m
+  [32m✔[39m [90mshould return a single blog by ID[39m [2m(7.55ms)[22m
+  [32m✔[39m [90mshould create a new blog[39m [2m(71.61ms)[22m
+  [32m✔[39m [90mshould update an existing blog and create an audit log[39m [2m(68.76ms)[22m
+  [32m✔[39m [90mshould delete a blog and create an audit log[39m [2m(69.25ms)[22m
+
+functional / Bookmark controller[2m (tests/functional/bookmark.spec.ts)[22m
+  [32m✔[39m [90mshould return a list of bookmarks[39m [2m(8ms)[22m
+  [32m✔[39m [90mshould return a single bookmark by ID[39m [2m(4.39ms)[22m
+  [32m✔[39m [90mshould create a new bookmark[39m [2m(68.44ms)[22m
+  [32m✔[39m [90mshould update a bookmark[39m [2m(80.65ms)[22m
+  [32m✔[39m [90mshould delete a bookmark[39m [2m(85.47ms)[22m
+
+functional / Project ideas controller[2m (tests/functional/project_ideas.spec.ts)[22m
+  [32m✔[39m [90mshould return a list of project ideas[39m [2m(11.41ms)[22m
+  [32m✔[39m [90mshould return a single project idea by ID[39m [2m(3.07ms)[22m
+  [32m✔[39m [90mshould create a new project idea[39m [2m(72.17ms)[22m
+  [32m✔[39m [90mshould update a project idea[39m [2m(66.97ms)[22m
+  [32m✔[39m [90mshould delete a project idea[39m [2m(66.29ms)[22m
+[ [32msuccess[39m ] Truncated tables successfully
+[31m[39m[41m[30m ERRORS [49m[39m[31m[39m
+
+  ❯ [4mBlog controller / should return a list of blogs[24m
+
+  Assertion Error: expected 404 to equal 200
+
+[32m- Expected  - 1[39m
+[31m+ Received  + 1[39m
+
+[32m- 200[39m
+[31m+ 404[39m
+
+   at [33mObject.executor[39m [32mtests/functional/blog.spec.ts[39m:[32m22[39m
+   [2m20[22m[2m|[22m  [2m    const response = await client.get('/apsi/blog')[22m
+   [2m21[22m[2m|[22m  [2m[22m
+ [31m❯[39m [31m22[39m[31m|[39m  [31m    response.assertStatus(200)[39m
+   [2m23[22m[2m|[22m  [2m    response.assertBodyContains({[22m
+   [2m24[22m[2m|[22m  [2m      success: true,[22m
+[31m[1/1]─[39m
+
+[41m[30m FAILED [49m[39m
+
+[2mTests[22m  [32m18 passed[39m, [31m1 failed[39m [2m(19)[22m
+ [2mTime[22m  [2m1s[22m
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/geovany/dev/my-space/apps/backend
+npm error workspace backend@0.0.0
+npm error location /Users/geovany/dev/my-space/apps/backend
+npm error command failed
+npm error command sh -c node ace test
