@@ -23,24 +23,24 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "tsconfig.json",
-        "hash": "10458285668168121747"
+        "file": ".gitignore",
+        "hash": "17220349988481517596"
       },
       {
-        "file": ".gitignore",
-        "hash": "7491429331426537560"
+        "file": "nx.json",
+        "hash": "388312510819791306"
       },
       {
         "file": "package-lock.json",
-        "hash": "18282861238819353093"
+        "hash": "632240745896548323"
       },
       {
         "file": "package.json",
         "hash": "12544546857036490445"
       },
       {
-        "file": "nx.json",
-        "hash": "388312510819791306"
+        "file": "tsconfig.json",
+        "hash": "10458285668168121747"
       }
     ],
     "projectFileMap": {
@@ -593,14 +593,19 @@
         },
         {
           "file": "apps/frontend/package.json",
-          "hash": "13024843035536262121",
+          "hash": "17617622899862435662",
           "deps": [
             "npm:@nx/next",
-            "npm:@types/node",
-            "npm:eslint@8.57.0",
-            "npm:postcss",
-            "npm:typescript@5.5.4",
-            "npm:next",
+            "npm:@types/node@20.16.1",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:eslint",
+            "npm:eslint-config-next",
+            "npm:postcss@8.4.31",
+            "npm:tailwindcss",
+            "npm:typescript",
+            "npm:lucide-react",
+            "npm:next@14.2.6",
             "npm:react",
             "npm:react-dom"
           ]
@@ -608,6 +613,10 @@
         {
           "file": "apps/frontend/postcss.config.mjs",
           "hash": "2557392112968376575"
+        },
+        {
+          "file": "apps/frontend/public/me.webp",
+          "hash": "9218628946466368274"
         },
         {
           "file": "apps/frontend/public/next.svg",
@@ -627,16 +636,45 @@
         },
         {
           "file": "apps/frontend/src/app/layout.tsx",
-          "hash": "14869893044596788660",
+          "hash": "10149017392981907966",
           "deps": [
-            "npm:next"
+            "npm:next@14.2.6"
           ]
         },
         {
           "file": "apps/frontend/src/app/page.tsx",
-          "hash": "16908419593553433010",
+          "hash": "13416230624984284562",
           "deps": [
-            "npm:next"
+            "npm:next@14.2.6"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/app/writing/page.tsx",
+          "hash": "1042634058180781808",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/components/icons/index.tsx",
+          "hash": "17449620659441857774",
+          "deps": [
+            "npm:lucide-react"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/components/icons/shared/index.tsx",
+          "hash": "14155568645117442802",
+          "deps": [
+            "npm:lucide-react"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/components/sidebar.tsx",
+          "hash": "10349558507018181929",
+          "deps": [
+            "npm:next@14.2.6",
+            "npm:react"
           ]
         },
         {

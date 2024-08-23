@@ -10868,6 +10868,15 @@
         "hash": "sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg=="
       }
     },
+    "npm:lucide-react": {
+      "type": "npm",
+      "name": "npm:lucide-react",
+      "data": {
+        "version": "0.429.0",
+        "packageName": "lucide-react",
+        "hash": "sha512-548DahFy7Ey+0OPlOyZ6ipnbGJzewv8gq2DxDrnAzWZ4RN4+3XyIwQXhD4AQvuREFjS1EnbAgOMaYB0VQyaK1g=="
+      }
+    },
     "npm:luxon": {
       "type": "npm",
       "name": "npm:luxon",
@@ -13425,22 +13434,52 @@
       },
       {
         "source": "frontend",
-        "target": "npm:@types/node",
+        "target": "npm:@types/node@20.16.1",
         "type": "static"
       },
       {
         "source": "frontend",
-        "target": "npm:postcss",
+        "target": "npm:@types/react",
         "type": "static"
       },
       {
         "source": "frontend",
-        "target": "npm:typescript@5.5.4",
+        "target": "npm:@types/react-dom",
         "type": "static"
       },
       {
         "source": "frontend",
-        "target": "npm:next",
+        "target": "npm:eslint",
+        "type": "static"
+      },
+      {
+        "source": "frontend",
+        "target": "npm:eslint-config-next",
+        "type": "static"
+      },
+      {
+        "source": "frontend",
+        "target": "npm:postcss@8.4.31",
+        "type": "static"
+      },
+      {
+        "source": "frontend",
+        "target": "npm:tailwindcss",
+        "type": "static"
+      },
+      {
+        "source": "frontend",
+        "target": "npm:typescript",
+        "type": "static"
+      },
+      {
+        "source": "frontend",
+        "target": "npm:lucide-react",
+        "type": "static"
+      },
+      {
+        "source": "frontend",
+        "target": "npm:next@14.2.6",
         "type": "static"
       },
       {
@@ -13451,11 +13490,6 @@
       {
         "source": "frontend",
         "target": "npm:react-dom",
-        "type": "static"
-      },
-      {
-        "source": "frontend",
-        "target": "npm:tailwindcss",
         "type": "static"
       }
     ],
@@ -27308,6 +27342,13 @@
       {
         "source": "npm:lru-cache",
         "target": "npm:yallist",
+        "type": "static"
+      }
+    ],
+    "npm:lucide-react": [
+      {
+        "source": "npm:lucide-react",
+        "target": "npm:react",
         "type": "static"
       }
     ],
