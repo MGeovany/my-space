@@ -4,7 +4,7 @@ import { Icons } from "./icons";
 
 export const SideBar: FC = () => {
   return (
-    <div className="border-2 h-full max-h-screen min-h-screen w-[250px] p-4 border-zinc-800 bg-zinc-900">
+    <div className="border-2 h-full max-h-screen min-h-screen w-[230px] min-w-[230px] p-4 border-zinc-800 bg-zinc-900">
       <h1 className="font-bold text-sm py-2">mgeovany&apos;s space</h1>
       <ul className="space-y-2 my-6">
         <li className="text-sm hover:bg-zinc-800 cursor-pointer rounded-md">

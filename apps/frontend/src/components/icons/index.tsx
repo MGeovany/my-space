@@ -5,6 +5,7 @@ import {
   HomeIcon,
   ProjectIcon,
   WritingIcon,
+  LoadingIcon,
 } from "./shared";
 
 export const Icons = {
@@ -14,4 +15,5 @@ export const Icons = {
   project: ProjectIcon,
   github: GithubIcon,
   linkedIn: LinkedinIcon,
+  loading: LoadingIcon,
 };
