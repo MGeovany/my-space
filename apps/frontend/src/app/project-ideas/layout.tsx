@@ -8,21 +8,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [projectIdeas, setProjectIdeas] = useState<ProjectIdeas[]>([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/blog`).then((res) => {
+    fetch(`${API_URL}/project_ideas`).then((res) => {
       res.json().then((data) => {
-        setBlogs(data.data);
+        setProjectIdeas(data.data);
       });
     });
   }, []);
   return (
     <div className="flex flex-row min-h-screen w-full">
       <SidebarContent
-        data={blogs}
-        title="✍️ Recent Writings"
-        redirect="writing"
+        title="🧑‍💻 Project ideas"
+        data={projectIdeas}
+        redirect="project-ideas"
       />
       {children}
     </div>

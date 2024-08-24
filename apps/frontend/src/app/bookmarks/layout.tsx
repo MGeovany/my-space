@@ -1,7 +1,6 @@
 "use client";
 import { SidebarContent } from "@/components/sidebar-content";
 import { API_URL } from "@/constants";
-import { Bookmark } from "@/types/database";
 import { useEffect, useState } from "react";
 
 export default function RootLayout({

@@ -1,20 +1,17 @@
 "use client";
 import { Icons } from "@/components/icons";
 import { API_URL } from "@/constants";
-import { Bookmark } from "@/types/database";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function Page({ params }: { params: { bookmarkId: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
   const [bookmark, setBookmarks] = useState<Bookmark>();
   const [isImageBroken, setIsImageBroken] = useState(false);
 
   useEffect(() => {
-    async function fetchBlog() {
+    async function fetchData() {
       try {
-        const response = await fetch(
-          `${API_URL}/bookmark/${params.bookmarkId}`
-        );
+        const response = await fetch(`${API_URL}/bookmark/${params.id}`);
         const data = await response.json();
         if (data.success) {
           setBookmarks(data.data);
@@ -24,8 +21,8 @@ export default function Page({ params }: { params: { bookmarkId: string } }) {
       }
     }
 
-    fetchBlog();
-  }, [params.bookmarkId]);
+    fetchData();
+  }, [params.id]);
 
   if (!bookmark) {
     return (

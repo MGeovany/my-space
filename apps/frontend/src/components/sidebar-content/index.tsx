@@ -64,11 +64,11 @@ export const SidebarContent: FC<SidebarContentProps> = ({
                       </span>
                     </>
                   )}
-                  {redirect === "writing" && (
+                  {redirect === "writing" || redirect === "project-ideas" ? (
                     <p className="text-sm text-gray-500">
                       {format(content.createdAt, "MMMM dd, yyyy")}
                     </p>
-                  )}
+                  ) : null}
                 </div>
               </Link>
             </li>

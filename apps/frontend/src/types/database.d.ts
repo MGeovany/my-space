@@ -9,16 +9,25 @@ interface Blog {
 interface Bookmark {
   id: number;
   title: string;
+  description: string;
   url: string;
   tag: BookmarkTag;
   createdAt: string;
   updatedAt: string;
 }
 
-export enum BookmarkTag {
+enum BookmarkTag {
   TOOLS = "tools",
   RESOURCES = "resources",
   WEB = "web",
   READING = "reading",
   PORFOLIO = "porfolio",
+}
+
+interface ProjectIdeas {
+  id: number;
+  title: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
 }
