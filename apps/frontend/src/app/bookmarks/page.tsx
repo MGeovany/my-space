@@ -1,5 +1,5 @@
-import React from "react";
-
-export default function BookMarks() {
-  return <div>BookMarks</div>;
+export default function Bookmarks() {
+  return (
+    <div className="mx-auto w-full max-w-3xl px-4 py-12 pb-10 md:px-8 bg-dots" />
+  );
 }

@@ -1,7 +1,7 @@
 "use client";
 import { SidebarContent } from "@/components/sidebar-content";
 import { API_URL } from "@/constants";
-import { Blog } from "@/types/database";
+import { Bookmark } from "@/types/database";
 import { useEffect, useState } from "react";
 
 export default function RootLayout({
@@ -9,21 +9,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/blog`).then((res) => {
+    fetch(`${API_URL}/bookmark`).then((res) => {
       res.json().then((data) => {
-        setBlogs(data.data);
+        setBookmarks(data.data);
       });
     });
   }, []);
   return (
     <div className="flex flex-row min-h-screen w-full">
       <SidebarContent
-        data={blogs}
-        title="✍️ Recent Writings"
-        redirect="writing"
+        title="💎 Bookmarks"
+        data={bookmarks}
+        redirect="bookmarks"
       />
       {children}
     </div>

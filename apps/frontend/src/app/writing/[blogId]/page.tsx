@@ -1,6 +1,7 @@
 "use client";
 import { Icons } from "@/components/icons";
 import { API_URL } from "@/constants";
+import { Blog } from "@/types/database";
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
 
