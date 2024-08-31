@@ -1,30 +1,18 @@
-"use client";
-import { SidebarContent } from "@/components/sidebar-content";
-import { API_URL } from "@/constants";
-import { useEffect, useState } from "react";
+import { BookmarksList } from '@/components/bookmarks/bookmarks-list'
+import { ListDetailView } from '@/components/layouts'
+import * as React from 'react'
 
-export default function RootLayout({
+export default function BookmarksLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
-
-  useEffect(() => {
-    fetch(`${API_URL}/bookmark`).then((res) => {
-      res.json().then((data) => {
-        setBookmarks(data.data);
-      });
-    });
-  }, []);
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <div className="flex flex-row min-h-screen w-full">
-      <SidebarContent
-        title="💎 Bookmarks"
-        data={bookmarks}
-        redirect="bookmarks"
-      />
-      {children}
-    </div>
-  );
+    <ListDetailView
+      list={<BookmarksList />}
+      hasDetail
+      shouldHideSidebar={false}
+      detail={children}
+    />
+  )
 }

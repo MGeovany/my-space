@@ -1,28 +1,28 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { SideBar } from "@/components/sidebar";
+import { Inter } from 'next/font/google'
+import './globals.css'
+import '../styles/custom-styles.css'
+import '../styles/dracula.css'
+import '../styles/prose-styles.css'
+import { Providers } from '@/components/providers'
+import { SiteLayout } from '@/components/layouts'
+import { ReactNode } from 'react'
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "mgeovany's space",
-  description: "Space to share knowledge",
-};
+const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
+  pageProps,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode
+  pageProps: any
 }>) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-row min-h-screen">
-          <SideBar />
-          {children}
-        </div>
+        <Providers pageProps={pageProps}>
+          <SiteLayout>{children}</SiteLayout>
+        </Providers>
       </body>
     </html>
-  );
+  )
 }

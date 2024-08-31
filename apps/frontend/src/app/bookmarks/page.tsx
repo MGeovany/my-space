@@ -1,5 +1,13 @@
+'use client'
+import routes from '@/config/routes'
+import { NextSeo } from 'next-seo'
+
 export default function Bookmarks() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-12 pb-10 md:px-8 bg-dots" />
-  );
+    <NextSeo
+      title={routes.bookmarks.seo.title}
+      description={routes.bookmarks.seo.description}
+      openGraph={routes.bookmarks.seo.openGraph}
+    />
+  )
 }

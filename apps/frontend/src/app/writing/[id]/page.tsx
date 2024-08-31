@@ -33,11 +33,13 @@ export default function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-12 pb-10 md:px-8 flex max-h-screen flex-col overflow-y-auto">
-      <h1 className="text-3xl font-bold">{blog.title}</h1>
-      <p className="text-zinc-400 my-4">
-        {format(blog.createdAt, "MMMM dd, yyyy")}
-      </p>
-      <p className="my-10 leading-7 text-zinc-400">{blog.content}</p>
+      <div className="mx-auto w-full max-w-3xl px-4 py-12 pb-10 md:px-8">
+        <h1 className="text-3xl font-bold">{blog.title}</h1>
+        <p className="text-zinc-400 my-4">
+          {format(blog.createdAt, "MMMM dd, yyyy")}
+        </p>
+        <p className="my-10 leading-7 text-zinc-400">{blog.content}</p>
+      </div>
     </div>
   );
 }
