@@ -2,6 +2,8 @@ interface Blog {
   id: number
   title: string
   content: string
+  url?: string
+  description?: string
   createdAt: string
   updatedAt: string
 }

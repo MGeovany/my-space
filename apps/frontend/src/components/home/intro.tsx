@@ -1,11 +1,10 @@
 'use client'
-import Image from 'next/image'
-import Link from 'next/link'
 
-import { MapPin } from 'react-feather'
-import { Detail } from '../list-detail/detail'
-import { TitleBar } from '../list-detail/TitleBar'
 import { useRef } from 'react'
+import Image from 'next/image'
+
+import { Detail } from '@/components/list-detail/detail'
+import { TitleBar } from '@/components/list-detail/TitleBar'
 
 function SectionTitle(props: any) {
   return (
@@ -92,7 +91,7 @@ export function Intro() {
             <SectionTitle />
             <SectionContent>
               <div className="prose text-primary">
-                <p className="text-zinc-400 leading-8 mt-12 mb-4">
+                <p>
                   Hi, I’m Marlon Geovany Castro Mejia. I’m a{' '}
                   <a
                     target="_blank"
@@ -168,7 +167,7 @@ export function Intro() {
               <div className="flex flex-col space-y-3">
                 {workHistory.map((job) => (
                   <TableRow
-                    href={job.href}
+                    href={job.href ?? ''}
                     title={job.title}
                     subtitle={job.subtitle}
                     date={job.date}

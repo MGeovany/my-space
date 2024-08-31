@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm'
 import linkifyRegex from 'remark-linkify-regex'
 
 import { CodeBlock } from './code-block'
+import toast from 'react-hot-toast'
 
 function LinkRenderer({ href, ...rest }: any) {
   // auto-link headings
@@ -26,7 +27,7 @@ function LinkRenderer({ href, ...rest }: any) {
     }
     return <a target="_blank" rel="noopener" href={href} {...rest} />
   } catch (e) {
-    console.error(e)
+    toast.error(`error: ${e}`)
     return <a target="_blank" rel="noopener" href={href} {...rest} />
   }
 }

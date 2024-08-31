@@ -1,5 +1,13 @@
-export default function Writing() {
+'use client'
+import { NextSeo } from 'next-seo'
+import routes from '@/config/routes'
+
+export default function ProjectIdeas() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-12 pb-10 md:px-8 bg-dots" />
-  );
+    <NextSeo
+      title={routes.writing.seo.title}
+      description={routes.writing.seo.description}
+      openGraph={routes.writing.seo.openGraph}
+    />
+  )
 }
