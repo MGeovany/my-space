@@ -12,7 +12,9 @@ interface Props {
 
 export function ListDetailView({ list, detail, hasDetail = false }: Props) {
   const pathname = usePathname()
-  const hasDetailUrl = /\/bookmarks\/\d+$/.test(pathname)
+  const hasDetailUrl = /\/(project-ideas|writing|bookmarks)\/\d+$/.test(
+    pathname
+  )
 
   return (
     <div className="flex w-full">

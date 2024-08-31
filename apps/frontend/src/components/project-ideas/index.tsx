@@ -3,40 +3,44 @@ import { useEffect, useState } from 'react'
 import { LayoutGroup, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import axios from 'axios'
-import toast from 'react-hot-toast'
 
 import { ListContainer } from '@/components/list-detail/ListContainer'
-import { BookmarksTitleBar } from '@/components/bookmarks/bookmarks-title-bar'
 import { LoadingSpinner } from '@/components/loading-spinner'
 import { API_URL } from '@/constants'
-import { BookmarksListItem } from '@/components/bookmarks/bookmarks-list-item'
+import { TitleBar } from '@/components/list-detail/TitleBar'
+import { ProjectIdeaListItem } from '@/components/project-ideas/project-list-item'
 
-export const BookmarksList = () => {
+export const ProjectIdeasList = () => {
   const pathname = usePathname()
 
   const [loading, setLoading] = useState(false)
-  const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
-  const [scrollContainerRef, setScrollContainerRef] = useState(null)
+  const [data, setData] = useState<ProjectIdeas[]>([])
+  const [scrollContainerRef, setScrollContainerRef] = useState<
+    React.MutableRefObject<HTMLElement | null> | undefined
+  >(undefined)
 
   useEffect(() => {
     setLoading(true)
     axios
-      .get(`${API_URL}/bookmark`)
+      .get(`${API_URL}/project_ideas`)
       .then((response) => {
-        setBookmarks(response.data.data)
+        setData(response.data.data)
       })
       .catch((error) => {
-        toast.error('Error fetching bookmarks:', error)
+        console.error('Error fetching data:', error)
       })
       .finally(() => {
         setLoading(false)
       })
   }, [])
 
-  if (loading && bookmarks.length === 0) {
+  if (loading && data.length === 0) {
     return (
       <ListContainer onRef={setScrollContainerRef}>
-        <BookmarksTitleBar scrollContainerRef={scrollContainerRef} />
+        <TitleBar
+          scrollContainerRef={scrollContainerRef}
+          title="📡 Project Ideas"
+        />
         <div className="flex flex-1 items-center justify-center">
           <LoadingSpinner />
         </div>
@@ -45,16 +49,19 @@ export const BookmarksList = () => {
   }
 
   return (
-    <ListContainer data-cy="bookmarks-list" onRef={setScrollContainerRef}>
-      <BookmarksTitleBar scrollContainerRef={scrollContainerRef} />
+    <ListContainer onRef={setScrollContainerRef}>
+      <TitleBar
+        scrollContainerRef={scrollContainerRef}
+        title="📡 Project Ideas"
+      />
       <LayoutGroup>
         <div className="lg:space-y-1 lg:p-3">
-          {bookmarks.map((content) => {
-            const isActive = pathname === `/bookmarks/${content.id}`
+          {data.map((content) => {
+            const isActive = pathname === `/project-ideas/${content.id}`
 
             return (
               <motion.div layout key={content.id}>
-                <BookmarksListItem active={isActive} bookmark={content} />
+                <ProjectIdeaListItem active={isActive} projectIdeas={content} />
               </motion.div>
             )
           })}

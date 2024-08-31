@@ -34,6 +34,16 @@ const routes = {
       url: 'bookmarks',
     }),
   },
+  projectIdeas: {
+    label: 'Project Ideas',
+    path: '/project-ideas',
+    seo: extendSEO({
+      title: 'Project Ideas',
+      description: 'A collection of project ideas.',
+      image: 'og/bookmarks.png',
+      url: 'project-ideas',
+    }),
+  },
 }
 
 export default routes

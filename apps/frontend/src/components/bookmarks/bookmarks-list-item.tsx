@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react'
-import { ListItem } from '../list-detail/ListItem'
-import { Icons } from '../icons'
 import Image from 'next/image'
+import { ListItem } from '@/components/list-detail/ListItem'
+import { Icons } from '@/components/icons'
 
 interface BookmarksListItemProps {
   bookmark: Bookmark

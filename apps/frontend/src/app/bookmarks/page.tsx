@@ -1,6 +1,6 @@
 'use client'
-import routes from '@/config/routes'
 import { NextSeo } from 'next-seo'
+import routes from '@/config/routes'
 
 export default function Bookmarks() {
   return (

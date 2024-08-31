@@ -1,5 +1,13 @@
+'use client'
+import { NextSeo } from 'next-seo'
+import routes from '@/config/routes'
+
 export default function ProjectIdeas() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-12 pb-10 md:px-8 bg-dots" />
+    <NextSeo
+      title={routes.projectIdeas.seo.title}
+      description={routes.projectIdeas.seo.description}
+      openGraph={routes.projectIdeas.seo.openGraph}
+    />
   )
 }

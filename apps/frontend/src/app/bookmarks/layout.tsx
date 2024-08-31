@@ -1,12 +1,8 @@
+import { ReactNode } from 'react'
 import { BookmarksList } from '@/components/bookmarks/bookmarks-list'
 import { ListDetailView } from '@/components/layouts'
-import * as React from 'react'
 
-export default function BookmarksLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function BookmarksLayout({ children }: { children: ReactNode }) {
   return (
     <ListDetailView
       list={<BookmarksList />}

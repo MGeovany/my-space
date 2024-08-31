@@ -15,10 +15,9 @@ import { TitleBar } from '@/components/list-detail/TitleBar'
 import { MarkdownRenderer } from '@/components/markdown-renderer'
 import { PrimaryButton } from '@/components/button'
 import { Icons } from '@/components/icons'
-import { Tags } from '@/components/tag'
 
-export function BookmarkDetail({ id }: { id: string }) {
-  const [bookmark, setBookmarks] = useState<Bookmark>()
+export function ProjectDetail({ id }: { id: string }) {
+  const [data, setData] = useState<ProjectIdeas>()
   const [imageBroken, setImageBroken] = useState<boolean>()
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -29,10 +28,10 @@ export function BookmarkDetail({ id }: { id: string }) {
     async function fetchData() {
       setLoading(true)
       try {
-        const response = await axios.get(`${API_URL}/bookmark/${id}`)
+        const response = await axios.get(`${API_URL}/project_ideas/${id}`)
         const data = response.data
         if (data.success) {
-          setBookmarks(data.data)
+          setData(data.data)
         }
       } catch (error) {
         toast.error(`Error fetching data: ${error}`)
@@ -48,49 +47,48 @@ export function BookmarkDetail({ id }: { id: string }) {
     return <Detail.Loading />
   }
 
-  if (!bookmark) {
+  if (!data) {
     return <Detail.Loading />
   }
 
   return (
     <>
       <NextSeo
-        title={bookmark.title}
-        description={bookmark.description}
+        title={data.title}
+        description={data.description}
         openGraph={{
-          title: bookmark.title,
-          description: bookmark.description,
+          title: data.title,
+          description: data.title,
           images: [
             {
-              url: routes.bookmarks.seo.image || '',
-              alt: routes.bookmarks.seo.description,
+              url: routes.projectIdeas.seo.image || '',
+              alt: routes.projectIdeas.seo.description,
             },
           ],
         }}
       />
-      <Detail.Container data-cy="bookmark-detail" ref={scrollContainerRef}>
+      <Detail.Container ref={scrollContainerRef}>
         <TitleBar
           backButton
           globalMenu={false}
-          backButtonHref={'/bookmarks'}
+          backButtonHref={'/project-ideas'}
           magicTitle
-          title={bookmark.title}
+          title={data.title}
           titleRef={titleRef}
           scrollContainerRef={scrollContainerRef}
         />
         <Detail.ContentContainer>
           <Detail.Header>
-            <Tags tags={bookmark.tag} />
             <Link
-              href={bookmark.url}
+              href={data.url}
               target="_blank"
               rel="noopener"
               className="block"
             >
-              <Detail.Title ref={titleRef}>{bookmark.title}</Detail.Title>
+              <Detail.Title ref={titleRef}>{data.title}</Detail.Title>
             </Link>
             <Link
-              href={bookmark.url}
+              href={data.url}
               target="_blank"
               rel="noopener"
               className="flex items-center space-x-2 leading-snug text-tertiary"
@@ -99,19 +97,19 @@ export function BookmarkDetail({ id }: { id: string }) {
                 <Icons.url />
               ) : (
                 <Image
-                  src={`https://www.google.com/s2/favicons?domain=${bookmark.url}`}
+                  src={`https://www.google.com/s2/favicons?domain=${data.url}`}
                   alt="favicon"
                   width={16}
                   height={16}
                   onError={() => setImageBroken(true)}
                 />
               )}
-              <span>{new URL(bookmark.url).hostname}</span>
+              <span>{new URL(data.url).hostname}</span>
             </Link>
-            {bookmark.description && (
+            {data.url && (
               <MarkdownRenderer
                 className="italic prose opacity-70"
-                children={bookmark.description}
+                children={data.description}
                 variant="comment"
               />
             )}
@@ -119,7 +117,7 @@ export function BookmarkDetail({ id }: { id: string }) {
           <div className="mt-6">
             <PrimaryButton
               size="large"
-              href={bookmark.url}
+              href={data.url}
               target="_blank"
               rel="noopener noreferrer"
             >

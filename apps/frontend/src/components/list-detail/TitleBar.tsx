@@ -1,10 +1,12 @@
 'use client'
+
 import { ArrowLeft, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 
 import {
   MutableRefObject,
   ReactNode,
+  RefObject,
   useCallback,
   useContext,
   useEffect,
@@ -13,13 +15,13 @@ import {
 } from 'react'
 import { GlobalNavigationContext } from '../providers'
 
-interface Props {
+interface TitleBarProps {
   title: string
   globalMenu?: boolean
   backButton?: boolean
   backButtonHref?: string
   magicTitle?: boolean
-  titleRef?: MutableRefObject<HTMLParagraphElement> | null
+  titleRef?: RefObject<HTMLParagraphElement> | null
   scrollContainerRef?: MutableRefObject<HTMLElement | null>
   children?: ReactNode
   leadingAccessory?: ReactNode
@@ -37,9 +39,8 @@ export function TitleBar({
   leadingAccessory = null,
   trailingAccessory = null,
   children,
-}: Props) {
+}: TitleBarProps) {
   const { isOpen, setIsOpen } = useContext(GlobalNavigationContext)
-  const [darkMode, setDarkMode] = useState(false)
   const [offset, setOffset] = useState(200)
   const [opacity, _setOpacity] = useState(0)
   const [currentScrollOffset, _setCurrentScrollOffset] = useState(0)
@@ -110,23 +111,14 @@ export function TitleBar({
     })
   }, [title, titleRef, scrollContainerRef])
 
-  useEffect(() => {
-    const isDarkMode =
-      window?.matchMedia &&
-      window?.matchMedia('(prefers-color-scheme: dark)').matches
-    if (isDarkMode) setDarkMode(true)
-  }, [])
-
   return (
     <>
       <div
         style={{
-          background: `rgba(${darkMode ? '50,50,50' : '255,255,255'},${
+          background: `rgba(50,50,50) ,${
             currentScrollOffset === 0
               ? currentScrollOffset
-              : darkMode
-                ? currentScrollOffset + 0.5
-                : currentScrollOffset + 0.8
+              : currentScrollOffset + 0.5
           })`,
           boxShadow: `0 1px 3px rgba(0,0,0,${currentScrollOffset})`,
           minHeight: '48px',
@@ -150,7 +142,7 @@ export function TitleBar({
 
             {backButton && (
               <Link
-                href={backButtonHref}
+                href={backButtonHref ?? ''}
                 className="flex items-center justify-center p-2 rounded-md text-primary hover:bg-gray-200 dark:hover:bg-gray-800 lg:hidden"
               >
                 <ArrowLeft size={16} className="text-primary" />

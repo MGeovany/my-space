@@ -172,7 +172,7 @@ export function Intro() {
                     title={job.title}
                     subtitle={job.subtitle}
                     date={job.date}
-                    key={job.href}
+                    key={job.title}
                   />
                 ))}
               </div>
