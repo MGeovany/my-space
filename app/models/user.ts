@@ -6,6 +6,7 @@ import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { ModelObject } from '@adonisjs/lucid/types/model'
 import { AuditLogAction } from '../constants/index.js'
 import AuditLog from './audit_log.js'
+import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -30,6 +31,8 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+
+  static accessTokens = DbAccessTokensProvider.forModel(User)
 
   public static async createAuditTrail(
     userId: string,

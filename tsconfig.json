@@ -1,12 +1,13 @@
 {
-  "include": ["**/*.ts"],
+  "extends": "@adonisjs/tsconfig/tsconfig.app.json",
+  "include": ["**/*"],
   "exclude": ["node_modules", "build"],
   "compilerOptions": {
+    "outDir": "build",
     "rootDir": "./",
     "baseUrl": "./",
     "sourceMap": true,
     "inlineSources": true,
-    "skipLibCheck": true,
     "resolveJsonModule": true
   }
 }
