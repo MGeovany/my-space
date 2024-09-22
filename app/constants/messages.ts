@@ -8,6 +8,7 @@ export const MESSAGES = {
 
   userCreateSuccess: 'User created successfully',
   userLoggedOut: 'User logged out successfully',
+  userExists: 'User already exists',
 
   blogCreateSuccess: 'Blog added successfully',
   blogUpdateSuccess: 'Blog updated successfully',

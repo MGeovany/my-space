@@ -6,6 +6,7 @@ router
   .group(() => {
     router.post('/', [SessionController, 'login'])
     router.post('/signup', [SessionController, 'signup'])
+    router.post('/:id/tokens', [SessionController, 'getToken'])
     router.post('/logout', [SessionController, 'logout'])
   })
-  .prefix('api/session')
+  .prefix('api/users')

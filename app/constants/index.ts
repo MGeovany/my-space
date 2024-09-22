@@ -6,9 +6,9 @@ export enum AuditLogAction {
 }
 
 export enum BookmarkTag {
-  TOOLS = 'tools',
-  RESOURCES = 'resources',
-  WEB = 'web',
-  READING = 'reading',
-  PORFOLIO = 'porfolio',
+  TOOLS = 'Tools',
+  RESOURCES = 'Resources',
+  WEB = 'Web',
+  READING = 'Reading',
+  PORFOLIO = 'Porfolio',
 }

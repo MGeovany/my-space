@@ -25,7 +25,7 @@ export default class BookmarksController {
     })
   }
 
-  public async store({ response, request, auth }: HttpContext) {
+  public async store({ response, request, session }: HttpContext) {
     const data = request.all()
     const payload = await createBookmarkValidator.validate(data)
 
@@ -36,23 +36,29 @@ export default class BookmarksController {
     bookmark.tag = payload.tag
     await bookmark.save()
 
-    const user = auth.user
-    if (user) {
-      const currentValue = bookmark.toObject()
-      const description = `Bookmark created with title: ${bookmark.title}`
-      const ipAddress = request.ip()
-      const userId = user.id.toString()
+    const user = session.get('user')
 
-      await User.createAuditTrail(
-        userId,
-        ipAddress,
-        AuditLogAction.CREATE,
-        description,
-        currentValue,
-        undefined,
-        Blog.table
-      )
+    if (!user) {
+      return response.unauthorized({
+        success: false,
+        message: 'User not authenticated',
+      })
     }
+
+    const currentValue = bookmark.toObject()
+    const description = `Bookmark created with title: ${bookmark.title}`
+    const ipAddress = request.ip()
+    const userId = user.id.toString()
+
+    await User.createAuditTrail(
+      userId,
+      ipAddress,
+      AuditLogAction.CREATE,
+      description,
+      currentValue,
+      undefined,
+      Blog.table
+    )
 
     return response.created({
       success: true,

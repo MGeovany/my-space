@@ -24,6 +24,7 @@ export default class extends BaseSchema {
 
   async down() {
     this.schema.dropTable(this.tableName)
+    this.schema.raw('DROP TYPE IF EXISTS "bookmark_tags" CASCADE')
     this.schema.raw('DROP TYPE IF EXISTS "audit_log_actions" CASCADE')
   }
 }
