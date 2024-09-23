@@ -47,7 +47,6 @@ export default class AuthMiddleware {
             },
             (err, res) => {
               if (err) {
-                console.log('### ERROR err1 ###:', err, '###ERROR err2###')
                 reject(err)
               } else {
                 return resolve(res!.sub as string)
@@ -55,7 +54,6 @@ export default class AuthMiddleware {
             }
           )
         } catch (error) {
-          console.log('### ERROR ###:', error, '###ERROR###')
           return response.forbidden({
             success: false,
             message: 'Invalid token',
@@ -66,7 +64,7 @@ export default class AuthMiddleware {
 
     try {
       const data = await verifyToken()
-      console.log(data, 'data')
+
       // const auth0UserId = (data as string).split('|')[1]
       const user = await User.findBy('auth_0_user_id', data)
 
@@ -78,7 +76,6 @@ export default class AuthMiddleware {
       }
       session.put('user', user)
     } catch (error) {
-      console.log('### otro 1ERROR ###:', error, '###otro 2 ERROR2###')
       return response.forbidden({
         success: false,
         message: 'Invalid token',
