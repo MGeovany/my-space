@@ -50,15 +50,19 @@ export default class BookmarksController {
     const ipAddress = request.ip()
     const userId = user.id.toString()
 
-    await User.createAuditTrail(
-      userId,
-      ipAddress,
-      AuditLogAction.CREATE,
-      description,
-      currentValue,
-      undefined,
-      Blog.table
-    )
+    try {
+      await Bookmark.createAuditTrail(
+        userId,
+        ipAddress,
+        AuditLogAction.CREATE,
+        description,
+        currentValue,
+        undefined,
+        Bookmark.table
+      )
+    } catch (error) {
+      console.error(error)
+    }
 
     return response.created({
       success: true,
