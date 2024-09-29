@@ -1,14 +1,8 @@
-import { Ignitor } from '@adonisjs/ignitor'
+import { Ignitor } from '@adonisjs/core/build/standalone'
 
-const app = new Ignitor(require('path').join(__dirname, '../'))
-
-app
+new Ignitor(__dirname)
   .httpServer()
-  .then((server) => {
-    server.listen(process.env.PORT || 3333, () => {
-      console.log(`Server running on port ${process.env.PORT || 3333}`)
-    })
-  })
+  .start()
   .catch((error) => {
     console.error('Error starting server:', error)
     process.exit(1)
