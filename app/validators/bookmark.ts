@@ -7,9 +7,9 @@ import { BookmarkTag } from '../constants/index.js'
 
 export const createBookmarkValidator = vine.compile(
   vine.object({
-    title: vine.string().trim().minLength(6),
+    title: vine.string().trim(),
     url: vine.string().trim().url(),
-    description: vine.string().trim().minLength(6),
+    description: vine.string().trim(),
     tag: vine.enum(BookmarkTag),
   })
 )
