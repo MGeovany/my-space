@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node bin/server.js",
-    "build": "node ace build",
+    "build": "node ace build --production",
     "dev": "node ace serve --hmr",
     "test": "node ace test",
     "lint": "eslint . --ext=.ts --fix",
@@ -61,6 +61,7 @@
     "@adonisjs/cors": "^2.2.1",
     "@adonisjs/lucid": "^21.2.0",
     "@adonisjs/session": "^7.4.2",
+    "@vercel/node": "^3.2.17",
     "@vinejs/vine": "^2.1.0",
     "jsonwebtoken": "^9.0.2",
     "jwks-rsa": "^3.1.0",
