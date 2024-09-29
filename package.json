@@ -9,7 +9,7 @@
     "build": "node ace build",
     "dev": "node ace serve --hmr",
     "test": "node ace test",
-    "lint": "eslint . --ext=.ts",
+    "lint": "eslint . --ext=.ts --fix",
     "format": "prettier --write .",
     "migrate": "node ace migration:run --force",
     "scheduler": "node ace scheduler:run",
