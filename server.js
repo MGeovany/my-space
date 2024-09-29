@@ -1,5 +1,15 @@
-'use strict'
+import { Ignitor } from '@adonisjs/ignitor'
 
-const { Ignitor } = require('@adonisjs/core/build/standalone')
+const app = new Ignitor(require('path').join(__dirname, '../'))
 
-new Ignitor(require('@adonisjs/fold')).appRoot(__dirname).fireHttpServer().catch(console.error)
+app
+  .httpServer()
+  .then((server) => {
+    server.listen(process.env.PORT || 3333, () => {
+      console.log(`Server running on port ${process.env.PORT || 3333}`)
+    })
+  })
+  .catch((error) => {
+    console.error('Error starting server:', error)
+    process.exit(1)
+  })
